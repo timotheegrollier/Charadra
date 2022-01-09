@@ -7,28 +7,18 @@
 body {
     background: lightgray;
     height: 100vh;
-    background: url('./img/bg.jpg') center/cover fixed;
+    background: url("./img/bg.jpg") center/cover fixed;
     header {
         img {
-            height: 130px;
-            @media screen and(min-width:765px){
+            height: 115px;
+            @media screen and(min-width:765px) {
                 height: 150px;
             }
         }
     }
 }
 
-
-#api-results{
-    display: flex;
-    flex-direction: column;
-    height: 40%;
-    justify-content: space-around;
-    align-items: center;
-
-    .refresh-data{
-        @extend .text-primary;
-        font-size: 1.5rem;
-    }
-
+h1 {
+    color: rgba(245, 245, 245, 0.904) !important;
 }
+

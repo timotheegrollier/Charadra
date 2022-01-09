@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WorldsController!
+{% endblock %}
+
+{% block body %}
+<turbo-frame id="api-results">
+
+			{% for world in worlds %}
+				{% for id, status in world  %}
+					{% if id == 'status_enum' %}
+						{% if status != "ACTIVE" %}
+							<div class="d-flex col-12 align-items-center justify-content-center flex-column">
+								<div style="height:30px;width:30px;border:2px solid;background:red;border-radius:100%"></div>
+								<p class="h4">{{status}}</p>
+							</div>
+						{% else %}
+							<div class="d-flex col-12 align-items-center justify-content-center flex-column">
+								<div style="height:30px;width:30px;border:2px solid;background:green;border-radius:100%"></div>
+								<p class="h5 mt-2">{{status}}</p>
+							</div>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			<p class="text-center h6">
+				Players Online :
+				{% for world in worlds %}
+					{% for id, message in world  %}
+						{% if id == 'players_current' %}
+							{{message}}
+							/
+						{% endif %}
+						{% if id == 'players_maximum'%}
+							{{message}}
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</p>
+            <a href={{path('app_home')}} class="refresh-data" data-turbo-frame="_top">
+				<i class="fas fa-sync"></i>
+			</a>
+		</turbo-frame>
+{% endblock %}
+
