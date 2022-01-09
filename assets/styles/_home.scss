@@ -1,16 +1,18 @@
 #homePage{
-    height: 60%;
+    color: $font-home;
+    height: 50%;
     #api-results {
     display: flex;
     flex-direction: column;
     height: 80%;
     justify-content: space-around;
     align-items: center;
-    color: rgba(245, 245, 245, 0.904) !important;
+    
 
     .refresh-data {
         font-size: 1.5rem;
-        color: rgba(245, 245, 245, 0.904) !important;
+        color: $font-home;
+
     }
 }
 
