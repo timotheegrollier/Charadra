@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WorldsController!
+{% endblock %}
+
+{% block body %}
+<header class="d-flex justify-content-center mb-2">
+<img src="{{asset('/images/resize.png')}}" alt="banner" class="col-12 col-sm-8 col-md-6 col-xl-4"/>
+</header>
+	<h1 class="text-center">Charadra :
+	</h1>
+	<div id="api-results">
+		{% for world in worlds %}
+			{% for id, status in world  %}
+				{% if id == 'status_enum' %}
+					{% if status != "ACTIVE" %}
+						<div class="d-flex col-12 align-items-center justify-content-center flex-column">
+							<div style="height:30px;width:30px;border:2px solid;background:red;border-radius:100%"></div>
+							<p>{{status}}</p>
+						</div>
+					{% else %}
+						<div class="d-flex col-12 align-items-center justify-content-center flex-column">
+							<div style="height:30px;width:30px;border:2px solid;background:green;border-radius:100%"></div>
+							<p>{{status}}</p>
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		<p class="text-center">
+			Players Online :
+			{% for world in worlds %}
+				{% for id, message in world  %}
+					{% if id == 'players_current' %}
+						{{message}}
+						/
+					{% endif %}
+					{% if id == 'players_maximum'%}
+						{{message}}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</p>
+	</div>
+
+{% endblock %}
